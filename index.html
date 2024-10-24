@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>404 Not Found</title>
+    <style>
+        body {
+            background-color: black;
+            color: red;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+            padding: 50px;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h1 {
+            font-size: 80px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px darkred;
+        }
+        p {
+            font-size: 24px;
+            margin-bottom: 40px;
+            text-shadow: 1px 1px 3px darkred;
+        }
+        .glitch {
+            position: relative;
+            color: white;
+            font-size: 30px;
+            animation: glitch 1s infinite;
+        }
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: red;
+            background: black;
+            overflow: hidden;
+        }
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 red;
+            clip: rect(0, 900px, 0, 0);
+            animation: glitchTop 1s infinite linear alternate-reverse;
+        }
+        .glitch::after {
+            left: -2px;
+            text-shadow: -2px 0 blue;
+            clip: rect(0, 900px, 0, 0);
+            animation: glitchBottom 1s infinite linear alternate-reverse;
+        }
+        @keyframes glitch {
+            0% {transform: skew(0.5deg);}
+            25% {transform: skew(0deg);}
+            50% {transform: skew(-0.5deg);}
+            75% {transform: skew(0deg);}
+            100% {transform: skew(0.5deg);}
+        }
+        @keyframes glitchTop {
+            0% {clip: rect(24px, 900px, 56px, 0);}
+            50% {clip: rect(0, 900px, 50px, 0);}
+            100% {clip: rect(44px, 900px, 44px, 0);}
+        }
+        @keyframes glitchBottom {
+            0% {clip: rect(85px, 900px, 140px, 0);}
+            50% {clip: rect(20px, 900px, 90px, 0);}
+            100% {clip: rect(95px, 900px, 120px, 0);}
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>404</h1>
+        <p class="glitch" data-text="Something went wrong...">Something went wrong...</p>
+        <p>You shouldn't have come here...</p>
+    </div>
+</body>
+</html>
